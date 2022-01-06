@@ -18,7 +18,7 @@
 #### Needs:
 
 - Dropdown menus.
-- "Carrousel"
+- "Carrousel background"
 - Images from Spotify API
 - SEO proof texts
 - Social Media logos
@@ -27,6 +27,16 @@
 - Universal button
 - Webstite plan
 - WHo are we section
+- User account
+- Band account
+- Active Search (This user wants more group like that)
+
+##### V1 Objectives
+
+- Link API
+- Main page
+- Discover page
+- Band display
 
 ##### References Sites :
 
