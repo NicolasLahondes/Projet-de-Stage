@@ -1,6 +1,10 @@
 # Stage Project : Compass App
 ## Unknown band finder
 
+![alt text](https://raw.githubusercontent.com/NicolasLahondes/Projet-de-Stage/master/Maquette/Visual/Logo%20Compass/logofinal.png)
+
+
+
 ### Junior Web Developper project
 
 #### Pitch: Allow people to discover bands that are still unknown and bands to be promoted.
