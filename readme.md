@@ -13,7 +13,7 @@
 
 - Link to Spotify API.
 - Create a handy UI.
-- 
+- Medias uniformisations for images (Allow to have always same image size for every band page)
 
 #### Needs:
 
@@ -64,4 +64,8 @@
 
 [https://www.programmableweb.com/news/12-top-music-apis-2021/brief/2021/07/09]
 
-     
+##### Colors Scheme
+
+[http://paletton.com/#uid=15d0u0k-Wjpr2swuvnnJxeQSm9j]
+
+[http://paletton.com/#uid=10m0u0kEFBclOHtrVF0FOqGIXkP]
