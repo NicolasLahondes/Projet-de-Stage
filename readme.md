@@ -13,6 +13,20 @@
 
 - Link to Spotify API.
 - Create a handy UI.
+- 
+
+#### Needs:
+
+- Dropdown menus.
+- "Carrousel"
+- Images from Spotify API
+- SEO proof texts
+- Social Media logos
+- Date gestion
+- Make a tuto on add band page
+- Universal button
+- Webstite plan
+- WHo are we section
 
 ##### References Sites :
 
