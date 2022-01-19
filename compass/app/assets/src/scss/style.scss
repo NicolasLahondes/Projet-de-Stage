@@ -1,0 +1,16 @@
+// Setting up website bg by default
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+// Import all variables for style  
+
+@import "var.scss";
+
+// Import navbar style
+
+@import "nav.scss";
+
