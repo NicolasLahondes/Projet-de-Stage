@@ -1,0 +1,18 @@
+{
+    "name": "lahondes/compass",
+    "description": "Unknown band finder",
+    "autoload": {
+        "psr-4": {
+            "Compass\\": "Model/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nicolas-lahondes",
+            "email": "nicolas@lahondes.fr"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
