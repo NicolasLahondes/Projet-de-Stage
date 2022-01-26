@@ -1,10 +1,6 @@
-// Setting up website bg by default
+// Import main scss
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+@import "main.scss";
 
 // Import all variables for style  
 
