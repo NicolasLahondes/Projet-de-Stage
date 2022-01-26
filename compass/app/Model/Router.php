@@ -6,18 +6,24 @@ namespace Compass;
 
 class Router
 {
-
+    // Define params for rooter
     public function __construct($url) {
         $this->url = $url;
     }
 
-    public function home() { 
-     
+    // Load Controller
+    public function run() { 
         require_once 'Controller/IndexController.php';
     }
 
-    public function discoverpage() { 
-     
+    // Get the current url
+    public function getcurrenturl() {
+        return $this->url;
+    }
+
+    // Show the current url
+    public function show() {
+        echo $this->url;
     }
 
 }
