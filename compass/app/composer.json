@@ -3,7 +3,8 @@
     "description": "Unknown band finder",
     "autoload": {
         "psr-4": {
-            "Compass\\": "Model/"
+            "Compass\\Model\\": "Model/",
+            "Compass\\Controller\\": "Controller/"
         }
     },
     "authors": [

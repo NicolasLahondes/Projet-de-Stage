@@ -8,18 +8,12 @@ require 'vendor/autoload.php';
 $router = new Router($_GET['url']);
 
 // List of existing pages on the website
-$rootlist = ['home','discoverpage','profile','contact'];
-
+$rootlist = ['home','discover','profile','contact','register','admin'];
 // Search if requested url exist
+$router->run($rootlist); 
 
-foreach ($rootlist as $root) {
+    
 
-    // If the pages does exist in $rootlist it will get the controller.
-    if ($router->getcurrenturl() == $root) {
-        $router->run();
-    }
-
-}
 
 // Handle every case where the page does not exist (TODO) 
 

@@ -1,23 +1,26 @@
 <?php
 
-// Include navbar
+namespace Compass\Controller;
 
-include 'View/nav.twig';
+use Compass\Template;
 
-// Include rest of the package
+class IndexController
+{
 
-if ($_GET['url'] == "home") { 
-    echo 'you are on the home page';
+    public function __construct(array $rootlist)
+    {
+        $this->index($rootlist);
+    }
+    public function index(array $rootlist)
+    {
+        // $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../View");
+        // $twig = new \Twig\Environment($loader);
+        // echo $twig->render($_GET['url'] . '.twig', ['namepage' => $_GET['url']]);
+        $template = new Template();
+        $template->render();
+        
+
+    }
 }
 
-if ($_GET['url'] == "discoverpage") {
-    echo 'You are on the discover page';
-}
-
-if ($_GET['url'] == "profile") { 
-    echo 'You are on the profile page';
-}
-
-if ($_GET['url'] == "contact") { 
-    echo 'You are on the contact page';
-}
+// If the pages does exist in $rootlist it will get the controller.

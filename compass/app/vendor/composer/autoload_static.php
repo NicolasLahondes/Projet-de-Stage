@@ -25,6 +25,7 @@ class ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3
         ),
         'C' => 
         array (
+            'Compass\\Controller\\' => 19,
             'Compass\\' => 8,
         ),
     );
@@ -46,6 +47,10 @@ class ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Compass\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Controller',
+        ),
         'Compass\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Model',
@@ -62,12 +67,17 @@ class ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3::$classMap;
 
         }, null, ClassLoader::class);
     }
