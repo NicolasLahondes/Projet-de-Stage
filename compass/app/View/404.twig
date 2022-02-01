@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.twig" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
-</head>
-404 Page not found
-<body>
-<!-- This is supposed to display the twig current version but don't currently work-->
-<!-- <p>The current version is {{ constant('Twig_Environment::VERSION') }}</p> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-    <script src="js/nav.js"></script>
-</body>
-
-</html>
+{% block title %}Home Page{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+    <h1>{{ namepage|capitalize }}</h1>
+    <p class="important">
+        This is {{ namepage|capitalize }} page.
+    </p>
+{% endblock %}

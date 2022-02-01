@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace Compass;
 
 require 'vendor/autoload.php';
@@ -8,14 +8,6 @@ require 'vendor/autoload.php';
 $router = new Router($_GET['url']);
 
 // List of existing pages on the website
-$rootlist = ['home','discover','profile','contact','register','admin'];
+$rootlist = ['home', 'discover', 'profile', 'contact', 'register', 'admin'];
 // Search if requested url exist
-$router->run($rootlist); 
-
-    
-
-
-// Handle every case where the page does not exist (TODO) 
-
-
-
+$router->run($rootlist);

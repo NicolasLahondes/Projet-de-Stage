@@ -6,21 +6,40 @@ use Compass\Template;
 
 class IndexController
 {
+    /**
+     * error
+     *
+     * @var mixed
+     */
+    private $error;
 
-    public function __construct(array $rootlist)
+    /**
+     * __construct
+     *
+     * @param  mixed $rootlist
+     * @param  mixed $error
+     * @return void
+     */
+    public function __construct(array $rootlist, bool $error = false)
     {
-        $this->index($rootlist);
+        $this->error = $error;
+        $this->index($rootlist, $this->error);
     }
-    public function index(array $rootlist)
+    /**
+     * index
+     *
+     * @param  mixed $rootlist
+     * @param  mixed $error
+     * @return void
+     */
+    public function index(array $rootlist, $error)
     {
-        // $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../View");
-        // $twig = new \Twig\Environment($loader);
-        // echo $twig->render($_GET['url'] . '.twig', ['namepage' => $_GET['url']]);
-        $template = new Template();
-        $template->render();
-        
-
+        if ($error == true) {
+            $template = new Template();
+            $template->render('404', ['namepage' => '404 page not found']);
+        } else {
+            $template = new Template();
+            $template->render($_GET['url'], ['namepage' => $_GET['url']]);
+        }
     }
 }
-
-// If the pages does exist in $rootlist it will get the controller.
