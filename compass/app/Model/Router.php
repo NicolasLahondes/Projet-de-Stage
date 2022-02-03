@@ -18,6 +18,7 @@ class Router
         $this->url = $url;
     }
 
+
     // Load Controller    
 
     /**
@@ -28,9 +29,21 @@ class Router
      */
     public function run(array $rootlist)
     {
-        if (in_array($_GET['url'], $rootlist)) {
+        $sluglist = [];
+
+        foreach ($rootlist as $root) {
+            array_push($sluglist, $root["slug"]);
+        }
+
+        if (in_array(trim($_SERVER['REQUEST_URI'], "/"), $sluglist)) {
+            // echo "y";
+            // echo "<br>";
+            // echo $_SERVER['REQUEST_URI'];
             new \Compass\Controller\IndexController($rootlist);
         } else {
+            // echo "n";
+            // echo "<br>";
+            // echo $_SERVER['REQUEST_URI'];
             new \Compass\Controller\IndexController($rootlist, true);
         }
     }

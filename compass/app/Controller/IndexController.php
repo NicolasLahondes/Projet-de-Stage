@@ -39,7 +39,7 @@ class IndexController
             $template->render('404', ['namepage' => '404 page not found']);
         } else {
             $template = new Template();
-            $template->render($_GET['url'], ['namepage' => $_GET['url']]);
+            $template->render($_SERVER['REQUEST_URI'], ['namepage' => trim($_SERVER['REQUEST_URI'],"/")]);
         }
     }
 }

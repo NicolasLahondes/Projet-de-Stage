@@ -1,11 +1,13 @@
 {% extends "base.twig" %}
 
-{% block title %}Home Page{% endblock %}
-{% block head %}
+{% block title %}Home Page
 {% endblock %}
+{% block head %}{% endblock %}
 {% block content %}
-    <h1>{{ namepage|capitalize }}</h1>
-    <p class="important">
-        This is {{ namepage|capitalize }} page.
-    </p>
+	<h1>{{ namepage|capitalize }}</h1>
+	<p class="important">
+		This is
+		{{ namepage|capitalize }}
+		page.
+	</p>
 {% endblock %}

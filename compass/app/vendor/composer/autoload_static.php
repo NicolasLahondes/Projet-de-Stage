@@ -23,6 +23,14 @@ class ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'L' => 
+        array (
+            'League\\Uri\\' => 11,
+        ),
         'C' => 
         array (
             'Compass\\Controller\\' => 19,
@@ -46,6 +54,15 @@ class ComposerStaticInit502e5c6d6a723bb1b2d1b654359628d3
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'League\\Uri\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'Compass\\Controller\\' => 
         array (

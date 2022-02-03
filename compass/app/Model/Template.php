@@ -4,8 +4,6 @@ namespace Compass;
 
 class Template
 {
-
-    // Define params for template    
     /**
      * __construct
      *
@@ -13,6 +11,8 @@ class Template
      */
     public function __construct()
     {
+        $this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../View");
+        $this->twig = new \Twig\Environment($this->loader);
     }
 
     /**
@@ -24,8 +24,6 @@ class Template
      */
     public function render($url, array $parameters)
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../View");
-        $twig = new \Twig\Environment($loader);
-        echo $twig->render($url . '.twig', $parameters);
+        echo $this->twig->render($url . '.twig', $parameters);
     }
 }
