@@ -11,7 +11,7 @@ services:
       - php
 
   php:
-    image: php:fpm
+    build: php/
     links:
       - mariadb
     volumes:
@@ -46,4 +46,3 @@ services:
       - MYSQL_PASSWORD=zeus
       - MYSQL_HOST=mariadb
       - MYSQL_DATABASE=database
-

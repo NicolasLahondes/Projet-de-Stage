@@ -36,14 +36,8 @@ class Router
         }
 
         if (in_array(trim($_SERVER['REQUEST_URI'], "/"), $sluglist)) {
-            // echo "y";
-            // echo "<br>";
-            // echo $_SERVER['REQUEST_URI'];
             new \Compass\Controller\IndexController($rootlist);
         } else {
-            // echo "n";
-            // echo "<br>";
-            // echo $_SERVER['REQUEST_URI'];
             new \Compass\Controller\IndexController($rootlist, true);
         }
     }

@@ -2,21 +2,22 @@
 
 namespace Compass;
 
+use Compass\Database as CompassDatabase;
+
 require 'vendor/autoload.php';
 
 // This is a test to display URL parameter thus testing htaccess
 $router = new Router($_SERVER['REQUEST_URI']);
 
+$db = new CompassDatabase('mariadb', 'database', 'user', 'zeus');
+
+$req = $db->getPDO()->query("SELECT * FROM pages");
+
+$pages = $req->fetchall();
+
+
 
 // List of existing pages on the website
 
-$rootlist = array(
-    "home" => array('slug' => 'home', 'name' => "Home"),
-    "discover" => array('slug' => 'discover', 'name' => "Discover"),
-    "profile" => array('slug' => 'profile', 'name' => "Profile"),
-    "contact" => array('slug' => 'contact', 'name' => "Contact"),
-    "register" => array('slug' => 'register', 'name' => "Register"),
-    "admin" => array('slug' => 'admin', 'name' => "Admin")
-);
 // Search if requested url exist
-$router->run($rootlist);
+$router->run($pages);
