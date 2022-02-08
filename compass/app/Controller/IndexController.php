@@ -3,6 +3,7 @@
 namespace Compass\Controller;
 
 use Compass\Template;
+use Compass\User;
 
 class IndexController
 {
@@ -20,10 +21,11 @@ class IndexController
      * @param  mixed $error
      * @return void
      */
-    public function __construct(array $rootlist, bool $error = false)
+    public function __construct(object $db = null, array $rootlist, bool $error = false)
     {
         $this->error = $error;
-        $this->index($rootlist, $this->error);
+        $this->user = new User();
+        $this->index($db, $rootlist, $this->error);
     }
     /**
      * index
@@ -32,14 +34,17 @@ class IndexController
      * @param  mixed $error
      * @return void
      */
-    public function index(array $rootlist, $error)
+    public function index($db, array $rootlist, $error)
     {
+        // Redicrect on error
         if ($error == true) {
             $template = new Template();
             $template->render('404', ['namepage' => '404 page not found']);
         } else {
+            $users = $this->user->getUsers();
+            var_dump($users); exit;
             $template = new Template();
-            $template->render($_SERVER['REQUEST_URI'], ['namepage' => trim($_SERVER['REQUEST_URI'], "/")]);
+            $template->render($_SERVER['REQUEST_URI'], ['pageData' => $pageData]);
         }
     }
 }

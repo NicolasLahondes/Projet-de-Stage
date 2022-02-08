@@ -4,10 +4,10 @@
 {% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
-	<h1>{{ namepage|capitalize }}</h1>
-	<p class="important">
-		This is
-		{{ namepage|capitalize }}
-		page.
-	</p>
+
+	<h1>{{ pageData[0].getMail()}}</h1>
+	<p>{{ pageData[0].getArtist()}}</p>
+	<p>{{ pageData[0].mail}}</p>
+	{{ pageData.username }}
+
 {% endblock %}
