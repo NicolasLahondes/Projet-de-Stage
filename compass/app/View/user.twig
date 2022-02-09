@@ -1,13 +1,16 @@
 {% extends "base.twig" %}
 
+
 {% block title %}Home Page
 {% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
 
-	<h1>{{ pageData[0].getMail()}}</h1>
-	<p>{{ pageData[0].getArtist()}}</p>
-	<p>{{ pageData[0].mail}}</p>
-	{{ pageData.username }}
+	<div id="userprofile">
+		<p>Hello</p>
+	</div>
+
+	<h1>{{ pageData[0].username|capitalize }}</h1>
+
 
 {% endblock %}

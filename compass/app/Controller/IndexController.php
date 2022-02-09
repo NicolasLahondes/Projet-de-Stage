@@ -23,8 +23,12 @@ class IndexController
      */
     public function __construct(object $db = null, array $rootlist, bool $error = false)
     {
+        $this->oui = ucfirst(trim($_SERVER['REQUEST_URI'], "/"));
+        $this->classlist = "Compass" . "\\" ."User";
+        var_dump($this->classlist);
+        $this->methodlist = 'getUsers';
         $this->error = $error;
-        $this->user = new User();
+        $this->class = new $this->classlist;
         $this->index($db, $rootlist, $this->error);
     }
     /**
@@ -41,10 +45,11 @@ class IndexController
             $template = new Template();
             $template->render('404', ['namepage' => '404 page not found']);
         } else {
-            $users = $this->user->getUsers();
-            var_dump($users); exit;
+            $users = $this->class->getUsers();
+            echo "<br>";
+            var_dump($this->oui);
             $template = new Template();
-            $template->render($_SERVER['REQUEST_URI'], ['pageData' => $pageData]);
+            $template->render($_SERVER['REQUEST_URI'], ['pageData' => $users]);
         }
     }
 }

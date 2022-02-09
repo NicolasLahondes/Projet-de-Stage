@@ -5,11 +5,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
-		{% block stylesheet %}{# Loading navbar // Currently disabled, uncomment if you want it to appear#}
-			{# {{ include("nav.twig")}} #}
+		{% block stylesheet %}
+			{# Load meta stylesheet #}
+			<link rel="stylesheet" href="assets/public/css/style.min.css"/>
 		{% endblock %}
 	</head>
 	<body>
+		{% block nav %}
+			{# Loading navbar // Currently disabled, uncomment if you want it to appear#}
+			{# {{ include("nav.twig")}} #}
+		{% endblock %}
 		<div id="content"> {% block content %}{% endblock %}
 			</div>
 			<div id="footer">

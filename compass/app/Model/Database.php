@@ -57,7 +57,6 @@ class Database
         $fields = implode(", ",$fields);
         $preparequery = "SELECT $fields FROM $table";
         $query = $this->db->prepare($preparequery);
-        print_r($query);
         $query->execute();
         return $query->fetchall(PDO::FETCH_ASSOC);
     }
