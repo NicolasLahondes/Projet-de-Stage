@@ -33,21 +33,14 @@
 
 		<section id="bgblack">
 			<div class="container-fluid">
-				<div class="row mx-5 px-5 py-5 margin-auto-perso">
-					{% for i in 0..3 %}
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3  position-relative">
+				<div class="row mx-5 px-5 py-5">
+					{% for i in 0..7 %}
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 block-custom">
 							<p class="position-absolute textnormal artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
 							<img class="artistsquare" src="assets/images/danger.jpg">
-					</div>
-				{% endfor %}
-			</div>
-			<div class="row mx-5 px-5 py-5 margin-auto-perso">
-				{% for i in 0..3 %}
-					<div class="col-md-3 col-sm-6 position-relative">
-						<p class="position-absolute pl-3 pt-2 textnormal artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-						<img class="artistsquare" src="assets/images/danger.jpg">
+						</div>
+					{% endfor %}
 				</div>
-			{% endfor %}
-		</div>
-	</div>
-</section>{% endblock %}
+			</div>
+		</section>
+	{% endblock %}

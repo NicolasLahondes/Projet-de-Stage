@@ -1,5 +1,5 @@
 #userprofile {
-  height: 30vh;
+  height: 35vh;
   background: rgb(168, 7, 133);
   background: linear-gradient(90deg, rgba(168, 7, 133, 1) 0%, rgba(82, 59, 110, 1) 40%, rgba(255, 97, 231, 1) 100%);
 }
@@ -13,12 +13,15 @@
 }
 
 .textnormal {
+  top: 10px;
+  left: 30px;
   color: white;
   font-size: 20px;
 }
 
 .textimportant {
-
+  
+  
   color: white;
   font-size: 32px;
 
@@ -85,7 +88,7 @@
 
     font-size: 15px;
     font-weight: 500;
-    display: none;
+
 
   }
 
@@ -99,11 +102,14 @@
 
 
   .textimportant {
-
     color: white;
     font-size: 16px;
 
   }
+}
+
+.block-custom {
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width:771px) {
