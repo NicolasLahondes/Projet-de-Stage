@@ -6,64 +6,48 @@
 {% block head %}{% endblock %}
 {% block content %}
 	<section>
-		<div class="row px-5 py-5 text-center" id="userprofile">
-			<div class="col-3">
-				<img id="profilepic" src="assets/images/dogecoin.jpeg">
-				<h3 class="textwhite">{{ pageData[0].username|capitalize }}</h3>
-				<p class="textwhite">Modify Profile</p>
-			</div>
-			<div class="col-3">
-				<p class="bignumber">60</p>
-				<h3 class="textwhite">Artists Discovered</h3>
-			</div>
-			<div class="col-3">
-				<p class="bignumber">EBM</p>
-				<h3 class="textwhite">Is your favourite genre</h3>
-			</div>
-			<div class="col-3">
-				<p class="textimportant">Find new artists to add to your collection here</p>
-				<button id="btnprofile" name="button">Discover</button>
+		<div class="container-fluid">
+			<div class="row px-5 py-5 text-center" id="userprofile">
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<img class="mb-4" id="profilepic" src="assets/images/dogecoin.jpeg">
+					<h3 class="textnormal">{{ pageData[0].username|capitalize }}</h3>
+					<p class="textnormal">Modify Profile</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<p class="bignumber">60</p>
+					<h3 class="textnormal">Artists Discovered</h3>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<p class="bignumber">EBM</p>
+					<h3 class="textnormal">Is your favourite genre</h3>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<p class="textimportant">Find new artists to add to your collection here</p>
+					<button id="btnprofile" name="button">Discover</button>
 
-			</h3>
-			<div></div>
+				</h3>
+				<div></div>
+			</div>
+
 		</section>
 
 		<section id="bgblack">
-			<div class="row mx-5 px-5 py-5 margin-auto-perso">
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg"></img>
-				</div>
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg">
-				</div>
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg">
-				</div>
-					<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-				<img class="artistsquare" src="assets/images/danger.jpg">
+			<div class="container-fluid">
+				<div class="row mx-5 px-5 py-5 margin-auto-perso">
+					{% for i in 0..3 %}
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3  position-relative">
+							<p class="position-absolute textnormal artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+							<img class="artistsquare" src="assets/images/danger.jpg">
+					</div>
+				{% endfor %}
 			</div>
+			<div class="row mx-5 px-5 py-5 margin-auto-perso">
+				{% for i in 0..3 %}
+					<div class="col-md-3 col-sm-6 position-relative">
+						<p class="position-absolute pl-3 pt-2 textnormal artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+						<img class="artistsquare" src="assets/images/danger.jpg">
+				</div>
+			{% endfor %}
 		</div>
-			<div class="row mx-5 px-5 py-5 margin-auto-perso">
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg"></img>
-				</div>
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg">
-				</div>
-				<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-					<img class="artistsquare" src="assets/images/danger.jpg">
-				</div>
-					<div class="col-md-3 col-sm-6 position-relative">
-					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
-				<img class="artistsquare" src="assets/images/danger.jpg">
-			</div>
-	</section>
-
-{% endblock %}
+	</div>
+</section>{% endblock %}
