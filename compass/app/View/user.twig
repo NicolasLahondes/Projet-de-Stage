@@ -5,12 +5,65 @@
 {% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
+	<section>
+		<div class="row px-5 py-5 text-center" id="userprofile">
+			<div class="col-3">
+				<img id="profilepic" src="assets/images/dogecoin.jpeg">
+				<h3 class="textwhite">{{ pageData[0].username|capitalize }}</h3>
+				<p class="textwhite">Modify Profile</p>
+			</div>
+			<div class="col-3">
+				<p class="bignumber">60</p>
+				<h3 class="textwhite">Artists Discovered</h3>
+			</div>
+			<div class="col-3">
+				<p class="bignumber">EBM</p>
+				<h3 class="textwhite">Is your favourite genre</h3>
+			</div>
+			<div class="col-3">
+				<p class="textimportant">Find new artists to add to your collection here</p>
+				<button id="btnprofile" name="button">Discover</button>
 
-	<div id="userprofile">
-		<p>Hello</p>
-	</div>
+			</h3>
+			<div></div>
+		</section>
 
-	<h1>{{ pageData[0].username|capitalize }}</h1>
-
+		<section id="bgblack">
+			<div class="row mx-5 px-5 py-5 margin-auto-perso">
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg"></img>
+				</div>
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg">
+				</div>
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg">
+				</div>
+					<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+				<img class="artistsquare" src="assets/images/danger.jpg">
+			</div>
+		</div>
+			<div class="row mx-5 px-5 py-5 margin-auto-perso">
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg"></img>
+				</div>
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg">
+				</div>
+				<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+					<img class="artistsquare" src="assets/images/danger.jpg">
+				</div>
+					<div class="col-md-3 col-sm-6 position-relative">
+					<p class="position-absolute pl-3 pt-2 textwhite artistsquaretxt">{{ pageData[0].username|capitalize }}</p>
+				<img class="artistsquare" src="assets/images/danger.jpg">
+			</div>
+	</section>
 
 {% endblock %}

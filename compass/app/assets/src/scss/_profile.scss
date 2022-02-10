@@ -1,9 +1,72 @@
 #userprofile {
+    height: 30vh;
+    background: rgb(168,7,133);
+    background: linear-gradient(90deg, rgba(168,7,133,1) 0%, rgba(82,59,110,1) 40%, rgba(255,97,231,1) 100%); 
+}
 
-    background-color: black;
+.bignumber {
+
+    color: white;
+    font-size: 80px;
+    font-weight:900;
   
+  }
+
+.textwhite {
+    color:white;
 }
 
-p {
-    color: yellow;
-}
+  .textimportant {
+
+    color:white;
+    font-size:32px;
+
+  }
+
+  #btnprofile {
+
+    color: white;
+    font-size: 24px;
+    border-radius: 24px;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    height: 50px;
+    width: 200px;
+
+  }
+
+  #profilepic {
+
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+
+  }
+
+  .artistsquare {
+
+    height: 300px;
+    width: 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  .artistsquaretxt {
+
+    font-size: 150%;
+    font-weight: 700;
+
+  }
+
+
+  #bgblack{
+
+    background-color: rgb(34, 34, 34);
+
+  }
+
+  .margin-auto-perso div {
+
+    text-align: center; 
+
+  }

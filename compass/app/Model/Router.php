@@ -33,7 +33,7 @@ class Router
     {
         // Connexion to DB and fetch rootlist of all pages of the website
 
-        $req = $this->db->get("pages",array('slug'));
+        $req = $this->db->get("pages", array('slug'));
         $rootlist = $req;
 
         // List all pages of the website (Only for debug)

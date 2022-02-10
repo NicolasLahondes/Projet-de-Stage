@@ -196,7 +196,7 @@ class User
 
     public function getUsers()
     {
-        $users = $this->db->get('user', array ('username', 'firstname', 'lastname'));
+        $users = $this->db->get('user', array('username', 'firstname', 'lastname'));
         return $users;
     }
 }

@@ -13,7 +13,7 @@ class Database
     private $dbPassword;
     private $pdo;
     public $db;
-    
+
     /**
      * __construct
      *
@@ -24,7 +24,7 @@ class Database
         $this->db = $this->getPDO('mariadb', 'database', 'user', 'zeus');
         return $this->db;
     }
-    
+
     /**
      * getPDO
      *
@@ -43,7 +43,7 @@ class Database
 
         return $this->pdo;
     }
-    
+
     /**
      * get
      *
@@ -54,7 +54,7 @@ class Database
      */
     public function get(string $table, array $fields, array $where = null)
     {
-        $fields = implode(", ",$fields);
+        $fields = implode(", ", $fields);
         $preparequery = "SELECT $fields FROM $table";
         $query = $this->db->prepare($preparequery);
         $query->execute();

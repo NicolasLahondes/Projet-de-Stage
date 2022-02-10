@@ -24,7 +24,7 @@ class IndexController
     public function __construct(object $db = null, array $rootlist, bool $error = false)
     {
         $this->oui = ucfirst(trim($_SERVER['REQUEST_URI'], "/"));
-        $this->classlist = "Compass" . "\\" ."User";
+        $this->classlist = "Compass" . "\\" . "User";
         var_dump($this->classlist);
         $this->methodlist = 'getUsers';
         $this->error = $error;

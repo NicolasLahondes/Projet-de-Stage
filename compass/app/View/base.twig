@@ -7,15 +7,16 @@
 		<title>Document</title>
 		{% block stylesheet %}
 			{# Load meta stylesheet #}
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 			<link rel="stylesheet" href="assets/public/css/style.min.css"/>
 		{% endblock %}
 	</head>
 	<body>
 		{% block nav %}
 			{# Loading navbar // Currently disabled, uncomment if you want it to appear#}
-			{# {{ include("nav.twig")}} #}
+			{{ include("nav.twig")}}
 		{% endblock %}
-		<div id="content"> {% block content %}{% endblock %}
+		<div id=""> {% block content %}{% endblock %}
 			</div>
 			<div id="footer">
 				{% block footer %}
