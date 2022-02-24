@@ -35,6 +35,7 @@ CREATE TABLE `pages` (
   `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,7 +46,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (10,'Home','home','home'),(11,'Discover','discover','discover'),(12,'User','user','user'),(13,'Contact','contact','contact'),(14,'Register','register','register');
+INSERT INTO `pages` VALUES (10,'Home','home','home','Home'),(11,'Discover','discover','discover','Discover'),(12,'User','user','user','User'),(13,'Contact','contact','contact','Contact'),(14,'Register','register','register','Register');
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,4 +89,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-07 14:17:19
+-- Dump completed on 2022-02-18 13:47:26

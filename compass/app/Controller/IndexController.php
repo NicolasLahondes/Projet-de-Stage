@@ -21,15 +21,17 @@ class IndexController
      * @param  mixed $error
      * @return void
      */
-    public function __construct(object $db = null, array $rootlist, bool $error = false)
+    public function __construct(object $db = null, array $rootlist, string $class = null, string $method = null, bool $error = false)
     {
-        $this->oui = ucfirst(trim($_SERVER['REQUEST_URI'], "/"));
-        $this->classlist = "Compass" . "\\" . "User";
-        var_dump($this->classlist);
-        $this->methodlist = 'getUsers';
         $this->error = $error;
-        $this->class = new $this->classlist;
-        $this->index($db, $rootlist, $this->error);
+        $this->method = $method;
+        if ($class) {
+            // Generate class dynamically
+            $this->classlist = "Compass" . "\\" . $class;
+            // Register class inside a var so we can call method dynamically
+            $this->class = new $this->classlist;
+        }
+        $this->index($db, $rootlist, $this->error, $class);
     }
     /**
      * index
@@ -38,18 +40,50 @@ class IndexController
      * @param  mixed $error
      * @return void
      */
-    public function index($db, array $rootlist, $error)
+    public function index($db, array $rootlist, $error, $class)
     {
         // Redicrect on error
         if ($error == true) {
             $template = new Template();
             $template->render('404', ['namepage' => '404 page not found']);
         } else {
-            $users = $this->class->getUsers();
-            echo "<br>";
-            var_dump($this->oui);
-            $template = new Template();
-            $template->render($_SERVER['REQUEST_URI'], ['pageData' => $users]);
+
+            // Retrieve all methods from the loaded class
+            $methods = get_class_methods($this->classlist);
+            // Force retrieved method to be a string
+
+            // print_r($methods);
+            // Retrieve list methods except for construct and getters and setters.
+            foreach ($methods as $method) {
+                if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_")) {
+                    $retrievedMethods = [];
+                    array_push($retrievedMethods, $method);
+                }
+            }
+            // Check if retrieved method exist in class
+            foreach ($retrievedMethods as $method) {
+                print_r($method);
+                if (in_array($this->method, $retrievedMethods)) {
+                    $maMethod = (string)$this->method;
+                    $data = $this->class->$maMethod();
+                    $template = new Template();
+                    $template->render(strtolower($class), ['pageData' => $data]);
+                }
+                else {
+                    echo "non";
+                }
+            }
+
         }
     }
 }
+
+            // print_r($methods);
+            // foreach ($methods as $method) {
+            //     if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_")) {
+            //         print_r($method . "<br>");
+            //         $methodretrieved = $method;
+            //           print_r($this->class->$method);
+            //           print_r($this->class->$methodretrieved);
+            //     }
+            // }

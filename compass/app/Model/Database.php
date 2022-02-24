@@ -56,8 +56,13 @@ class Database
     {
         $fields = implode(", ", $fields);
         $preparequery = "SELECT $fields FROM $table";
+
+        if ($where) {
+            $preparequery .= " WHERE " . implode(" AND", $where);
+        }
+
         $query = $this->db->prepare($preparequery);
         $query->execute();
-        return $query->fetchall(PDO::FETCH_ASSOC);
+        return $query->fetchall(PDO::FETCH_OBJ);
     }
 }

@@ -33,27 +33,40 @@ class Router
     {
         // Connexion to DB and fetch rootlist of all pages of the website
 
-        $req = $this->db->get("pages", array('slug'));
-        $rootlist = $req;
+        // Get url info (class and method)
+        // Get full url and separate args for class and method
+        $url = trim($_SERVER['REQUEST_URI'], "/");
+        $urlcut = explode("/", $url);
 
-        // List all pages of the website (Only for debug)
-        // foreach ($rootlist as $page) {
-        //     echo $page["slug"] . "<br>";
-        // }
+        // Check if there is a method
+        $class = ucfirst($urlcut[0]);
+        if (isset($urlcut[1])) {
+            $method = $urlcut[1];
+        }
+        // Get all slugs
+        $req = $this->db->get("pages", array('slug'));
+        // print_r($req);
+        $rootlist = $req;
 
         // Get all the slugs from db array.
         $sluglist = [];
+
         foreach ($rootlist as $root) {
-            array_push($sluglist, $root["slug"]);
+            array_push($sluglist, $root->slug);
         }
 
         // Handle if pages exist or not. Redirect either on 404 or on existing page
-        if (in_array(trim($_SERVER['REQUEST_URI'], "/"), $sluglist)) {
-            new \Compass\Controller\IndexController($this->db, $rootlist);
+        if (in_array(strtolower($class), $sluglist)) {
+            if (isset($urlcut[1])) {
+                new \Compass\Controller\IndexController($this->db, $rootlist, $class, $method);
+            } else {
+                new \Compass\Controller\IndexController($this->db, $rootlist, $class);
+            }
         } else {
-            new \Compass\Controller\IndexController(null, $rootlist, true);
+            new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
         }
     }
+
 
     // Get the current url    
     /**
