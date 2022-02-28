@@ -61,6 +61,8 @@ class Router
             } else {
                 new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
             }
+        } else {
+            new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
         }
     }
 
