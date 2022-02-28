@@ -45,7 +45,6 @@ class Router
         }
         // Get all slugs
         $req = $this->db->get("pages", array('slug'));
-        // print_r($req);
         $rootlist = $req;
 
         // Get all the slugs from db array.
@@ -60,10 +59,8 @@ class Router
             if (isset($urlcut[1])) {
                 new \Compass\Controller\IndexController($this->db, $rootlist, $class, $method);
             } else {
-                new \Compass\Controller\IndexController($this->db, $rootlist, $class);
+                new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
             }
-        } else {
-            new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
         }
     }
 

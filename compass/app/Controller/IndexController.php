@@ -47,7 +47,7 @@ class IndexController
             $template = new Template();
             $template->render('404', ['namepage' => '404 page not found']);
         } else {
-
+            
             // Retrieve all methods from the loaded class
             $methods = get_class_methods($this->classlist);
             // Force retrieved method to be a string
@@ -62,28 +62,16 @@ class IndexController
             }
             // Check if retrieved method exist in class
             foreach ($retrievedMethods as $method) {
-                print_r($method);
                 if (in_array($this->method, $retrievedMethods)) {
                     $maMethod = (string)$this->method;
                     $data = $this->class->$maMethod();
                     $template = new Template();
                     $template->render(strtolower($class), ['pageData' => $data]);
-                }
-                else {
-                    echo "non";
+                } else {
+                    $template = new Template();
+                    $template->render('404', ['namepage' => '404 page not found']);
                 }
             }
-
         }
     }
 }
-
-            // print_r($methods);
-            // foreach ($methods as $method) {
-            //     if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_")) {
-            //         print_r($method . "<br>");
-            //         $methodretrieved = $method;
-            //           print_r($this->class->$method);
-            //           print_r($this->class->$methodretrieved);
-            //     }
-            // }
