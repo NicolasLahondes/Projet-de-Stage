@@ -7,10 +7,6 @@ use \PDO;
 class Database
 {
 
-    private $dbName;
-    private $dbAdress;
-    private $dbUser;
-    private $dbPassword;
     private $pdo;
     public $db;
 
@@ -21,7 +17,7 @@ class Database
      */
     public function __construct()
     {
-        $this->db = $this->getPDO('mariadb', 'database', 'user', 'zeus');
+        $this->db = $this->getPDO('mariadb', $_ENV['MYSQL_DATABASE'], $_ENV['MYSQL_USER'], $_ENV['MYSQL_PASSWORD']);
         return $this->db;
     }
 
@@ -64,5 +60,17 @@ class Database
         $query = $this->db->prepare($preparequery);
         $query->execute();
         return $query->fetchall(PDO::FETCH_OBJ);
+    }
+
+    public function getUserArtist()
+    {
+        $query = "SELECT DISTINCT `artist`.`name`, `artist_images`.`url` FROM `user`
+        INNER JOIN `user_artist` ON `user`.`id` = `user_artist`.`id_user`
+        INNER JOIN `artist` ON `user_artist`.`id_artist` = `artist`.`spotify_id`
+        LEFT JOIN `artist_images` ON `artist_images`.`id` = `artist`.`id_image`
+        WHERE `user`.`id` = 3";
+        $prepared = $this->db->prepare($query);
+        $prepared->execute();
+        return $prepared->fetchAll(PDO::FETCH_OBJ);
     }
 }

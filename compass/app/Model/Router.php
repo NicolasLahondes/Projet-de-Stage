@@ -5,7 +5,6 @@ namespace Compass;
 use Compass\Database as CompassDatabase;
 
 // Router allows to redirect to correct controllers.
-
 class Router
 {
     // Define params for rooter    
@@ -43,11 +42,8 @@ class Router
         if (isset($urlcut[1])) {
             $method = $urlcut[1];
         }
-        // Get all slugs
-        $req = $this->db->get("pages", array('slug'));
-        $rootlist = $req;
-
-        // Get all the slugs from db array.
+        // Get all slugs from DB
+        $rootlist = $this->db->get("pages", array('slug'));
         $sluglist = [];
 
         foreach ($rootlist as $root) {
@@ -56,13 +52,16 @@ class Router
 
         // Handle if pages exist or not. Redirect either on 404 or on existing page
         if (in_array(strtolower($class), $sluglist)) {
-            if (isset($urlcut[1])) {
-                new \Compass\Controller\IndexController($this->db, $rootlist, $class, $method);
+            if (isset($method)) {
+                // Handle if page and method does exist
+                new \Compass\Controller\IndexController($class, $method);
             } else {
-                new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
+                // Handle if no method correspond to class method
+                new \Compass\Controller\IndexController(null, null, true);
             }
         } else {
-            new \Compass\Controller\IndexController(null, $rootlist, null, null, true);
+            // Handle if the class does not correspond to any slug
+            new \Compass\Controller\IndexController(null, null, true);
         }
     }
 

@@ -16,6 +16,11 @@ services:
       - mariadb
     volumes:
       - ./app:/public
+    environment: 
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=user
+      - MYSQL_DATABASE=database
+      - MYSQL_PASSWORD=zeus     
 
   mariadb:
     restart: on-failure

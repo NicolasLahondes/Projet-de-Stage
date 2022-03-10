@@ -196,7 +196,14 @@ class User
 
     public function user()
     {
-        $users = $this->db->get('user', array('username', 'firstname', 'lastname'));
-        return $users;
+        $users = $this->db->get('user', array('username', 'firstname', 'lastname'), array("id = 3"));
+
+        $userartists = $this->db->getUserArtist();
+
+        $total = array($users, $userartists);
+
+        print_r($total);
+
+        return $total;
     }
 }
