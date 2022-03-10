@@ -1,40 +1,50 @@
 {% extends "base.twig" %}
 
-{% block title %}Home Page
+{% block title %}
+    Home Page
+    
 {% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
-	<h1>{{ namepage|capitalize }}</h1>
-	<div class="container">
-		<table class="table table-dark">
-			<thead>
-			  <tr>
-				<th scope="col">#</th>
-				<th scope="col">First</th>
-				<th scope="col">Last</th>
-				<th scope="col">Handle</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-			  </tr>
-			  <tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			  </tr>
-			  <tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			  </tr>
-			</tbody>
-		  </table>
-	</div>
+    <h1>
+        {{ namepage|capitalize }}
+    </h1>
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Spotify_Id
+                    </th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Popularity
+                    </th>
+                    <th scope="col">
+                        id_image
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for artist in pageData %}
+                    <tr>
+                        <th>
+                            {{ artist.spotify_id }}
+                        </th>
+                        <td>
+                            {{ artist.name }}
+                        </td>
+                        <td>
+                            {{ artist.popularity }}
+                        </td>
+                        <td>
+                            {{ artist.id_image }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
