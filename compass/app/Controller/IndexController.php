@@ -68,13 +68,14 @@ class IndexController
                     array_push($retrievedMethods, $method);
                 }
             }
+            
+            
+            // Check if retrieved method exist in class and display page
             var_dump($retrievedMethods);
             echo "<br>";
             var_dump($this->method);
-            // Check if retrieved method exist in class and display page
 
-
-            if (in_array(strtolower($this->method), $retrievedMethods))
+            if (in_array(lcfirst($this->method), $retrievedMethods))
             {
 
                 // var_dump($this->method); echo "<br>";
@@ -86,6 +87,7 @@ class IndexController
             }
             else
             {
+            
                 $template = new Template();
                 $template->render('404', ['namepage' => '404 page not found']);
             }
