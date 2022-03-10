@@ -2,6 +2,7 @@
 
 {% block title %}
     Home Page
+        
     
 {% endblock %}
 {% block head %}{% endblock %}
@@ -15,15 +16,27 @@
                 <tr>
                     <th scope="col">
                         Spotify_Id
+                                            
                     </th>
                     <th scope="col">
                         Name
+                                            
                     </th>
                     <th scope="col">
                         Popularity
+                                            
                     </th>
                     <th scope="col">
                         id_image
+                                            
+                    </th>
+                    <th scope="col">
+                        Modify
+                        				
+                    </th>
+                    <th scope="col">
+                        Supress
+                        			
                     </th>
                 </tr>
             </thead>
@@ -42,6 +55,12 @@
                         <td>
                             {{ artist.id_image }}
                         </td>
+						<td>
+						<button type="button" class="btn btn-primary">Modify</button>
+                        </td>
+						<td>
+						<button type="button" class="btn btn-primary">Supress</button>
+                        </td>	
                     </tr>
                 {% endfor %}
             </tbody>
