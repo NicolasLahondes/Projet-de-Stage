@@ -13,4 +13,9 @@ class Admin
     public function admin()
     {
     }
+
+    public function manageArtists()
+    {
+        echo "lol"; 
+    }
 }

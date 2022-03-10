@@ -57,30 +57,37 @@ class IndexController
         {
             // Retrieve all methods from the loaded class
             $methods = get_class_methods($this->class);
+
             // Retrieve list methods except for construct and getters and setters.
+            $retrievedMethods = [];
+
             foreach ($methods as $method)
             {
                 if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_"))
                 {
-                    $retrievedMethods = [];
                     array_push($retrievedMethods, $method);
                 }
             }
+            var_dump($retrievedMethods);
+            echo "<br>";
+            var_dump($this->method);
             // Check if retrieved method exist in class and display page
-            foreach ($retrievedMethods as $method)
+
+
+            if (in_array(strtolower($this->method), $retrievedMethods))
             {
-                if (in_array(strtolower($this->method), $retrievedMethods))
-                {
-                    $myMethod = (string)$this->method;
-                    $data = $this->class->$myMethod();
-                    $template = new Template();
-                    $template->render(strtolower($class), ['pageData' => $data]);
-                }
-                else
-                {
-                    $template = new Template();
-                    $template->render('404', ['namepage' => '404 page not found']);
-                }
+
+                // var_dump($this->method); echo "<br>";
+                // var_dump($retrievedMethods); echo "<br>";
+                $myMethod = (string)$this->method;
+                $data = $this->class->$myMethod();
+                $template = new Template();
+                $template->render(strtolower($class), ['pageData' => $data]);
+            }
+            else
+            {
+                $template = new Template();
+                $template->render('404', ['namepage' => '404 page not found']);
             }
         }
     }

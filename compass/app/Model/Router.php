@@ -60,8 +60,9 @@ class Router
         {
             if (isset($method) || in_array(strtolower($class), get_class_methods("Compass" . "\\" . $class)))
             {
-                if (in_array(strtolower($class), get_class_methods("Compass" . "\\" . $class)))
+                if (in_array(strtolower($class), get_class_methods("Compass" . "\\" . $class)) && !isset($method))
                 {
+                    
                     $method = $class;
                 }
                 // Handle if page and method does exist
@@ -69,6 +70,7 @@ class Router
             }
             else
             {
+                
                 new \Compass\Controller\IndexController(null, null, true);
             }
         }
