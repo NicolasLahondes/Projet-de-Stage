@@ -22,6 +22,15 @@ class Router
 
     // Load Controller    
 
+    private function route_flatten($array)
+    {
+        $sluglist = [];
+        foreach ($array as $element)
+        {
+            array_push($sluglist, $element->slug);
+        }
+        return $sluglist;
+    }
 
     /**
      * run
@@ -39,27 +48,32 @@ class Router
 
         // Check if there is a method
         $class = ucfirst($urlcut[0]);
-        if (isset($urlcut[1])) {
+        if (isset($urlcut[1]))
+        {
             $method = $urlcut[1];
         }
         // Get all slugs from DB
-        $rootlist = $this->db->get("pages", array('slug'));
-        $sluglist = [];
-
-        foreach ($rootlist as $root) {
-            array_push($sluglist, $root->slug);
-        }
+        $rootlist = (array) $this->route_flatten($this->db->get("pages", array('slug')));
 
         // Handle if pages exist or not. Redirect either on 404 or on existing page
-        if (in_array(strtolower($class), $sluglist)) {
-            if (isset($method)) {
+        if (in_array(strtolower($class), $rootlist) && class_exists("Compass" . "\\" . $class))
+        {
+            if (isset($method) || in_array(strtolower($class), get_class_methods("Compass" . "\\" . $class)))
+            {
+                if (in_array(strtolower($class), get_class_methods("Compass" . "\\" . $class)))
+                {
+                    $method = $class;
+                }
                 // Handle if page and method does exist
                 new \Compass\Controller\IndexController($class, $method);
-            } else {
-                // Handle if no method correspond to class method
+            }
+            else
+            {
                 new \Compass\Controller\IndexController(null, null, true);
             }
-        } else {
+        }
+        else
+        {
             // Handle if the class does not correspond to any slug
             new \Compass\Controller\IndexController(null, null, true);
         }

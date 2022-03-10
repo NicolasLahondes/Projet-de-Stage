@@ -25,11 +25,13 @@ class IndexController
     {
         $this->error = $error;
         $this->method = $method;
-        if ($class) {
+        if ($class)
+        {
             // Generate class dynamically
             $this->generateClass = "Compass" . "\\" . $class;
             // Register class inside a var so we can call method dynamically
-            if (class_exists($this->generateClass)) {
+            if (class_exists($this->generateClass))
+            {
                 $this->class = new $this->generateClass;
             }
         }
@@ -46,27 +48,36 @@ class IndexController
     public function index($error, $class)
     {
         // Redirect on error
-        if ($error == true || !class_exists($this->generateClass)) {
+        if ($error == true || !class_exists($this->generateClass))
+        {
             $template = new Template();
             $template->render('404', ['namepage' => '404 page not found']);
-        } else {
+        }
+        else
+        {
             // Retrieve all methods from the loaded class
             $methods = get_class_methods($this->class);
             // Retrieve list methods except for construct and getters and setters.
-            foreach ($methods as $method) {
-                if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_")) {
+            foreach ($methods as $method)
+            {
+                if (!str_starts_with($method, "get") && !str_starts_with($method, "set") && !str_starts_with($method, "_"))
+                {
                     $retrievedMethods = [];
                     array_push($retrievedMethods, $method);
                 }
             }
             // Check if retrieved method exist in class and display page
-            foreach ($retrievedMethods as $method) {
-                if (in_array($this->method, $retrievedMethods)) {
+            foreach ($retrievedMethods as $method)
+            {
+                if (in_array(strtolower($this->method), $retrievedMethods))
+                {
                     $myMethod = (string)$this->method;
                     $data = $this->class->$myMethod();
                     $template = new Template();
                     $template->render(strtolower($class), ['pageData' => $data]);
-                } else {
+                }
+                else
+                {
                     $template = new Template();
                     $template->render('404', ['namepage' => '404 page not found']);
                 }
