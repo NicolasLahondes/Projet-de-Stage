@@ -5,7 +5,25 @@
 {% block head %}{% endblock %}
 {% block content %}
 	<section id="front-page">
-		<div></div>
+		<div id="headerhero">
+			<img id="imgheaderhero" src="/assets/images/frontpageImg.jpg">
+			<div id="maintitle">
+				<h2 style="font-size:100px; text-align: center;">Discover your new favourite band now</h2>
+				<div class="d-flex justify-content-center">
+					<button class="mt-5" id="btnprofile" name="button">
+						<a style="text-decoration:none; color:white;" href="/discover/discover">Discover</a>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div id="lastartist" class="d-flex">
+			<div id="albumartist" class="col-6 px-0">
+				<img style="width:100%" src="/assets/images/avicii_album.jpg">
+			</div>
+			<div id="artistpic" class="col-6 px-0">
+				<img style="width:100%" src="/assets/images/avicii.jpg">
+			</div>
+		</div>
 	</section>
 
 {% endblock %}

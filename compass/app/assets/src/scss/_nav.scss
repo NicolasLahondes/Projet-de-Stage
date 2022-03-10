@@ -1,34 +1,38 @@
 // Settings for general nav  
-  nav {
-    // position: fixed; 
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    background-color: var(--bg);
-    padding: 3vh;
-  }
+nav {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: var(--bg);
+  padding: 3vh;
+  position:sticky;
+}
+
+
 
 // Settings for nav div that contains menu and texts.
-  .container {
-    max-width: 1920px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-start; 
-    justify-content: space-between;
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
-        // Text base for nav
-        a {
-            text-decoration: none;
-            padding-left:10vh;
-        }
-        // Style for discover
-        a#discover {
-            color: var(--txtimp)
-        }
-        // Style for signin
-        a#signin {
-            padding-right:10vh;
-            
-        }     
-    }
+  // Text base for nav
+  a {
+    text-decoration: none;
+    padding-left: 10vh;
+  }
+
+  // Style for discover
+  a#discover {
+    color: var(--txtimp)
+  }
+
+  // Style for signin
+  a#signin {
+    padding-right: 10vh;
+
+  }
+}
