@@ -34,7 +34,10 @@ CREATE TABLE `artist` (
   `spotify_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(300) NOT NULL,
   `popularity` int(150) NOT NULL,
-  PRIMARY KEY (`spotify_id`)
+  `id_image` int(11) DEFAULT NULL,
+  PRIMARY KEY (`spotify_id`),
+  KEY `id_image` (`id_image`),
+  CONSTRAINT `artist_ibfk_1` FOREIGN KEY (`id_image`) REFERENCES `artist_images` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,7 +47,7 @@ CREATE TABLE `artist` (
 
 LOCK TABLES `artist` WRITE;
 /*!40000 ALTER TABLE `artist` DISABLE KEYS */;
-INSERT INTO `artist` VALUES (2,'Avicii',50),(3,'Kavinsky',100),(4,'KUNGS',75),(5,'Nirvana',26);
+INSERT INTO `artist` VALUES (2,'Avicii',50,4),(3,'Kavinsky',100,3),(4,'KUNGS',75,5),(5,'Nirvana',26,2);
 /*!40000 ALTER TABLE `artist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,10 +91,7 @@ CREATE TABLE `artist_images` (
   `url` varchar(300) DEFAULT NULL,
   `height` int(10) DEFAULT NULL,
   `width` int(10) DEFAULT NULL,
-  `id_artist` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_artist` (`id_artist`),
-  CONSTRAINT `artist_images_ibfk_1` FOREIGN KEY (`id_artist`) REFERENCES `artist` (`spotify_id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,7 +101,7 @@ CREATE TABLE `artist_images` (
 
 LOCK TABLES `artist_images` WRITE;
 /*!40000 ALTER TABLE `artist_images` DISABLE KEYS */;
-INSERT INTO `artist_images` VALUES (1,'danger',NULL,NULL,NULL),(2,'nirvana',NULL,NULL,5),(3,'kavinsky',NULL,NULL,3),(4,'avicii',NULL,NULL,2),(5,'kungs',NULL,NULL,4);
+INSERT INTO `artist_images` VALUES (1,'danger',NULL,NULL),(2,'nirvana',NULL,NULL),(3,'kavinsky',NULL,NULL),(4,'avicii',NULL,NULL),(5,'kungs',NULL,NULL);
 /*!40000 ALTER TABLE `artist_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +207,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'ciriri','Ciri','Derive','ciri@mail','labretagne','mdp','2022-03-10',NULL),(4,'geraaaaaard','Gérard','Rivière','geralt@mail','legascon','mdp','2022-04-10',NULL);
+INSERT INTO `user` VALUES (3,'ciriri','Ciri','Derive','ciri@mail','labretagne','mdp','2022-03-10',NULL),(4,'geraaaaaard','Geralt','Derive','geralt@mail','legascon','mdp','2022-04-10',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +224,9 @@ CREATE TABLE `user_artist` (
   `id_artist` int(11) NOT NULL,
   PRIMARY KEY (`id_user_artist`),
   KEY `id_user` (`id_user`),
-  KEY `id_artist` (`id_artist`)
+  KEY `id_artist` (`id_artist`),
+  CONSTRAINT `user_artist_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
+  CONSTRAINT `user_artist_ibfk_2` FOREIGN KEY (`id_artist`) REFERENCES `artist` (`spotify_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -247,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-11 16:01:26
+-- Dump completed on 2022-03-11 12:43:35

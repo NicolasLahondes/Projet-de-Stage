@@ -35,7 +35,14 @@ class Database
 
         if ($this->pdo === null)
         {
-            $this->pdo = new PDO("mysql:dbname=$dbName;host=$dbAdress", $dbUser, $dbPassword);
+            try
+            {
+                $this->pdo = new PDO("mysql:dbname=$dbName;host=$dbAdress", $dbUser, $dbPassword);
+            }
+            catch (\PDOException $e)
+            {
+                throw new \Exception("Error: No database tables found.");
+            }
         }
 
         return $this->pdo;
@@ -68,7 +75,7 @@ class Database
     public function delete(string $table, array $fields, $id)
     {
         $fields = implode(', ', $fields);
-        $preparequery = "DELETE " . $fields ." FROM " . $table . "WHERE id_spotify =" . $id;
+        $preparequery = "DELETE " . $fields . " FROM " . $table . "WHERE id_spotify =" . $id;
 
         $query = $this->db->prepare($preparequery);
 
@@ -87,20 +94,16 @@ class Database
 
     public function getUserArtist()
     {
-        // $query = "SELECT DISTINCT `artist`.`name`, `artist_images`.`url` FROM `user`
-        // INNER JOIN `user_artist` ON `user`.`id` = `user_artist`.`id_user`
-        // INNER JOIN `artist` ON `user_artist`.`id_artist` = `artist`.`spotify_id`
-        // LEFT JOIN `artist_images` ON `artist_images`.`id` = `artist`.`id_image`
-        // WHERE `user`.`id` = 3";
+        $query = "SELECT DISTINCT `artist`.`name`, `artist_images`.`url` FROM `user`
+        INNER JOIN `user_artist` ON `user`.`id` = `user_artist`.`id_user`
+        INNER JOIN `artist` ON `user_artist`.`id_artist` = `artist`.`spotify_id`
+        LEFT JOIN `artist_images` ON `artist_images`.`id` = `artist`.`id_image`
+        WHERE `user`.`id` = 3";
 
-        $query = "SELECT * FROM `artist` 
-        INNER JOIN `artist_images` ON `artist_images`.`id` = `artist`.`id_image`
-        INNER JOIN `user_artist` ON `user_artist`.`id_artist` = `artist`.`spotify_id`";
+        
 
         $prepared = $this->db->prepare($query);
         $prepared->execute();
         return $prepared->fetchAll(PDO::FETCH_OBJ);
     }
-
-
 }
