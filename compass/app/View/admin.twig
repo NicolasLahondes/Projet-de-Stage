@@ -59,7 +59,9 @@
 						<button type="button" class="btn btn-primary">Modify</button>
                         </td>
 						<td>
-						<button type="button" class="btn btn-primary">Supress</button>
+						<form method="post" action="/admin/manageArtists" class="delete-artist-form">  
+							<input type="hidden" id="fname" name="fname" value={{artist.spotify_id}}><br><br>
+							<button type="submit" formmethod="post">Supress</button></form>
                         </td>	
                     </tr>
                 {% endfor %}

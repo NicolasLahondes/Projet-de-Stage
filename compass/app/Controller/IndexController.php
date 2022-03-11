@@ -68,26 +68,30 @@ class IndexController
                     array_push($retrievedMethods, $method);
                 }
             }
-            
-            
+
+
             // Check if retrieved method exist in class and display page
-            var_dump($retrievedMethods);
-            echo "<br>";
-            var_dump($this->method);
+
 
             if (in_array(lcfirst($this->method), $retrievedMethods))
             {
 
-                // var_dump($this->method); echo "<br>";
-                // var_dump($retrievedMethods); echo "<br>";
                 $myMethod = (string)$this->method;
-                $data = $this->class->$myMethod();
-                $template = new Template();
-                $template->render(strtolower($class), ['pageData' => $data]);
+                $firstSlugName = strtolower(str_replace("Compass\\", "", get_class($this->class)));
+
+                if ($firstSlugName != "api")
+                {
+                    $template = new Template();
+                    $data = $this->class->$myMethod();
+                    $template->render(strtolower($class), ['pageData' => $data]);
+                }
+                else
+                {
+                    $this->class->$myMethod();
+                }
             }
             else
             {
-            
                 $template = new Template();
                 $template->render('404', ['namepage' => '404 page not found']);
             }

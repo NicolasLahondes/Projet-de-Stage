@@ -19,9 +19,21 @@ class Admin
 
     public function manageArtists()
     {
-        $artists = $this->db->get('artist', array('spotify_id', 'name', 'popularity', 'id_image'));
+        // $artists = $this->db->get('artist', array('spotify_id', 'name', 'popularity', 'id_image'));
 
-        var_dump($artists);
+        $artists = $this->db->getUserArtist();
+
+        print_r($artists);
+
+        foreach ($artists as $artist) {
+            
+            echo $artist->name;
+            echo "<br>";
+            echo $artist->id_user;
+            echo "<br>";
+
+        }
+        exit;
 
         return $artists;
     }

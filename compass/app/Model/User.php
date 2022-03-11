@@ -202,7 +202,7 @@ class User
 
         $total = array($users, $userartists);
 
-        print_r($total);
+        // print_r($total);
 
         return $total;
     }
